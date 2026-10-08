@@ -1,0 +1,233 @@
+ATP-PHONE-P0A — SOURCE-LINK / VINTAGE / UNIVERSE FREEZE
+PREREGISTRATION v1.0
+Frozen 2026-10-07 before reading any ATP or Overture phone outcome.
+
+============================================================
+0. WHY THIS ROUTE IS ALLOWED TO REOPEN RESEARCH
+============================================================
+
+The full-campaign fresh tournament returned ZERO-COMMIT and stated that research could be
+reconsidered on material new evidence such as an exact-version, source-linked loss with
+complete known-positive recovery and independent controls.
+
+New evidence:
+- OvertureMaps/data GitHub issue #574, opened 2026-09-28:
+  "AllThePlaces missing phone numbers".
+- The issue reports a concrete latest-release UK AllThePlaces -> Overture phone-loss example.
+
+This issue is NOT evidence that:
+- the defect existed in Overture 2026-08-19.0;
+- the defect existed in the US challenge extracts;
+- it creates an equity disparity;
+- critical services are disproportionately affected.
+
+P0A exists to determine whether an exact, reproducible August-US source chain can even be
+constructed BEFORE reading phone preservation outcomes.
+
+============================================================
+1. P0A DOES NOT TEST THE PHONE-LOSS EFFECT
+============================================================
+
+P0A is outcome-blind with respect to phones.
+
+P0A MAY read:
+- challenge POI GERS IDs;
+- challenge POI source/provenance structs;
+- authoritative scored tract geometry;
+- August Overture bridge files;
+- AllThePlaces historical run metadata;
+- source record IDs, provider, resource, version, update_time;
+- geometry only as needed for exact scored-tract membership.
+
+P0A MUST NOT read or summarize:
+- ATP source phone values;
+- Overture phone arrays;
+- phone preservation/loss;
+- SVI/demographic disparities;
+- service-role/category outcome comparisons.
+
+If P0A cannot resolve a defensible exact source snapshot, STOP.
+Do not choose a convenient ATP run after looking at phone outcomes.
+
+============================================================
+2. FROZEN DATA / UNIVERSE
+============================================================
+
+Overture release:
+2026-08-19.0
+schema:
+v1.18.0
+
+Challenge source:
+Source Cooperative public Bias Bounty package.
+
+Current scored-region set:
+- eastern-ok
+- maricopa-az
+- northern-ca
+- south-central-tx
+- eastern-wa
+
+A record is eligible for P0A only if:
+1. it is an August challenge Overture POI;
+2. its point geometry intersects exactly one authoritative scored Census tract in exactly
+   one scored challenge region;
+3. its native Overture `sources` contains dataset `AllThePlaces`;
+4. that source entry exposes a nonblank source record_id;
+5. the `(GERS ID, ATP record_id)` pair is retained exactly.
+
+No proximity matching, name matching, geocoding, brand substitution, or nearest-POI rescue
+is permitted.
+
+============================================================
+3. P0A SOURCE-LINK SUPPORT GATE
+============================================================
+
+Before any P0B phone inspection is authorized, require:
+
+- >= 60 distinct exact ATP source records;
+- >= 10 distinct scored tracts;
+- >= 2 distinct challenge regions;
+- multi-region / multi-tract membership ambiguity <= 2% of candidate source records;
+- a deterministic frozen witness sample of up to 120 exact source-record/GERS pairs.
+
+The witness sample is selected ONLY by ascending SHA256 of:
+ATP_PHONE_P0A_v1|record_id|gers_id
+
+No phone field participates in selection.
+
+============================================================
+4. AUGUST BRIDGE CONSISTENCY GATE
+============================================================
+
+Using the official August 2026 bridge files:
+s3://overturemaps-us-west-2/bridgefiles/2026-08-19.0/
+
+For the deterministic witness sample, require 100% exact `(record_id, GERS ID)` recovery
+from bridge rows whose dataset is AllThePlaces.
+
+The August bridge partition changed to provider-first paths. The runner may use the provider
+recorded in the source struct when available; otherwise it may glob provider=* and filter
+dataset=AllThePlaces.
+
+A bridge mismatch is METHOD_UNRESOLVED.
+Do not replace a source identity with fuzzy matching.
+
+============================================================
+5. ALLTHEPLACES HISTORICAL SNAPSHOT IDENTITY
+============================================================
+
+Official ATP metadata endpoint:
+https://data.alltheplaces.xyz/runs/history.json
+
+Historical run metadata are frozen and SHA256-hashed.
+
+P0A may resolve an exact ATP run only through source provenance, for example:
+- exact run_id present in source `version` or `resource`;
+- exact run_id embedded unambiguously in source provenance;
+- an exact source-version token that maps uniquely to an ATP history run.
+
+P0A MUST NOT identify a run merely because it is the "closest run before release" unless a
+future separately preregistered provenance argument establishes that rule before phone
+outcomes.
+
+If no exact run can be resolved:
+ATP_SOURCE_SNAPSHOT_IDENTITY=UNRESOLVED
+ATP_PHONE_P0B_AUTHORIZED=NO
+
+This is a scientific blocker, not a phone-loss FAIL.
+
+============================================================
+6. MEASUREMENT-VALIDITY CONTRACT
+============================================================
+
+P0A operationalizes M0-M3 before the effect:
+
+M0 source authority/licensing:
+- AllThePlaces source records are CC0;
+- Overture August release/version and bridge release are frozen;
+- history metadata retrieval is hashed.
+
+M1 observable identity:
+- exact ATP record_id from native source provenance;
+- exact Overture GERS ID;
+- exact scored point/tract membership;
+- no fuzzy entity resolution.
+
+M2 scored-universe membership:
+- authoritative challenge tract polygons;
+- exact single-tract/single-region assignment.
+
+M3 candidate/source generation:
+- deterministic exact source/GERS witness freeze;
+- official bridge replay;
+- exact historical source snapshot required before P0B.
+
+M4-M6 are reserved for P0B:
+- symmetric positive/negative phone audit;
+- comparator/source-redundancy validity;
+- manual review contract if needed.
+
+============================================================
+7. P0A PASS / STOP
+============================================================
+
+ATP_PHONE_P0A=PASS only if:
+A. support gate passes;
+B. membership ambiguity gate passes;
+C. bridge sample exact-pair coverage = 100%;
+D. AllThePlaces history metadata is retrievable and frozen;
+E. exact ATP source snapshot identity is resolved prospectively from source provenance;
+F. PHONE_OUTCOME_READ=NO throughout P0A.
+
+PASS authorizes ATP-PHONE-P0B only.
+
+If A/B/C fail:
+ATP_PHONE_P0A=FAIL
+retire or technically adjudicate only the exact failing measurement-chain premise.
+
+If D/E fail:
+ATP_PHONE_P0A=METHOD_UNRESOLVED
+P0B is not authorized.
+Do not inspect phone outcomes while trying alternate historical runs.
+
+============================================================
+8. P0B — FROZEN DIRECTION, NOT YET EXECUTED
+============================================================
+
+If P0A passes, P0B will separately preregister:
+- exact source snapshot bytes/files;
+- exact eligible phone-bearing source universe;
+- phone normalization/equivalence;
+- symmetric audit of apparent preserved and apparent lost values;
+- known-positive fixtures;
+- deterministic sample / full-universe rule;
+- minimum support/severity gates;
+- prohibition on SVI/category disparity inspection until transfer defect is established.
+
+P0A does not authorize a Discovery submission or demographic claim.
+
+============================================================
+9. PUBLIC SOURCES
+============================================================
+
+Overture August release:
+https://docs.overturemaps.org/blog/2026/08/19/release-notes/
+
+Overture bridge files:
+https://docs.overturemaps.org/gers/bridge-files/
+
+Overture retention:
+https://docs.overturemaps.org/release-calendar/
+
+AllThePlaces API:
+https://github.com/alltheplaces/alltheplaces/blob/master/API.md
+
+AllThePlaces data format:
+https://github.com/alltheplaces/alltheplaces/blob/master/DATA_FORMAT.md
+
+Overture ATP phone issue:
+https://github.com/OvertureMaps/data/issues/574
+
+Overture attribution:
+https://docs.overturemaps.org/attribution/

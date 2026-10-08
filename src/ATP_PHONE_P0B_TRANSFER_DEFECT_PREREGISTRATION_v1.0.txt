@@ -1,0 +1,321 @@
+ATP-PHONE-P0B — EXACT SOURCE-LINKED PHONE TRANSFER DEFECT SCREEN
+PREREGISTRATION v1.0
+Frozen 2026-10-07 after P0A PASS and before reading ATP/Overture phone outcomes.
+
+============================================================
+0. AUTHORIZATION / PARENT
+============================================================
+
+Parent:
+ATP-PHONE-P0A PASS
+
+Frozen P0A manifest SHA256:
+AA378B770DDC30E626C4CF74FAFD1DE36765782BE1E7DB45DDC34103032921C4
+
+P0A established:
+- Overture release 2026-08-19.0 / schema v1.18.0;
+- 31,654 exact ATP source records;
+- 7,673 scored tracts;
+- all five challenge regions;
+- 4 region/tract-ambiguous source records;
+- ambiguity share 0.000126350;
+- zero multi-GERS ATP source records;
+- deterministic 120-pair witness;
+- 120/120 exact official August bridge replay;
+- exact ATP source snapshot resolved prospectively as:
+  run_id = 2026-08-01-13-32-15
+  start  = 2026-08-01T13:32:15Z
+  end    = 2026-08-05T15:33:36Z
+  output = https://alltheplaces-data.openaddresses.io/runs/2026-08-01-13-32-15/output.zip
+- PHONE_OUTCOME_READ=NO throughout P0A.
+
+P0B is authorized to read source/native phone values only under this frozen contract.
+
+============================================================
+1. SCIENTIFIC QUESTION
+============================================================
+
+For exact AllThePlaces source records that:
+- are in the frozen August ATP run,
+- are exact source-linked to exact August Overture GERS entities,
+- are inside the challenge scored universe,
+- and contain a valid US/NANP source phone,
+
+does the exact source phone survive anywhere in the complete native Overture `phones`
+representation of that exact same GERS entity?
+
+This is an attribute-transfer test.
+
+It is NOT:
+- a nearest-POI test;
+- a fuzzy-name/entity-recovery test;
+- a category-query test;
+- an SVI/demographic disparity test;
+- an emergency-impact claim;
+- a claim that a POI with a different phone is operationally unreachable.
+
+============================================================
+2. SOURCE BYTES MUST FREEZE BEFORE PHONE INSPECTION
+============================================================
+
+Download the exact P0A-resolved ATP output ZIP:
+https://alltheplaces-data.openaddresses.io/runs/2026-08-01-13-32-15/output.zip
+
+Before parsing any GeoJSON phone value:
+- compute total bytes;
+- compute SHA256;
+- record retrieval completion;
+- preserve the ZIP locally.
+
+If download bytes cannot be frozen, STOP.
+
+No alternative ATP run may be substituted after phone inspection.
+
+============================================================
+3. SOURCE RECORD MATCHING
+============================================================
+
+Use the complete P0A exact-source-link universe.
+
+ATP matching is exact only:
+P0A `record_id` == ATP GeoJSON Feature `id`.
+
+No:
+- name match;
+- coordinate match;
+- spider/ref reconstruction;
+- fuzzy ID;
+- nearest feature;
+- current/latest ATP substitution.
+
+Snapshot match coverage among frozen P0A source record IDs must be >= 99.0%.
+
+If below 99.0%:
+ATP_PHONE_P0B=METHOD_UNRESOLVED
+No Overture phone outcomes are read.
+
+============================================================
+4. SOURCE PHONE ELIGIBILITY / NORMALIZATION
+============================================================
+
+P0B uses the FULL matched source universe, not a post-outcome sample.
+
+A matched ATP record is phone-bearing if `properties.phone` is nonblank.
+
+ATP documents that multiple phone numbers may be `;` separated and that invalid/unparseable
+numbers can remain as-is.
+
+For this US challenge probe, a source number is VALID_NANP if, after:
+- splitting on semicolon;
+- stripping a trailing extension beginning with x, ext, ext., or extension;
+- removing all nondigits;
+
+it contains:
+- exactly 10 digits; OR
+- exactly 11 digits beginning with `1`, reduced to the final 10 digits.
+
+No seven-digit local-number inference.
+No area-code imputation.
+No current-website correction.
+No external phone lookup.
+
+A phone-bearing ATP record is source-eligible if it has >=1 VALID_NANP canonical number.
+
+Report source-nonblank but unparseable records separately.
+
+Require:
+- >= 60 source-eligible exact ATP records;
+- >= 10 scored tracts;
+- >= 2 challenge regions;
+- source-unparseable share <= 5% among matched nonblank-phone ATP records.
+
+If support fails:
+ATP_PHONE_P0B=FAIL
+No demographic/category rescue.
+
+============================================================
+5. FREEZE SOURCE PHONE UNIVERSE BEFORE OVERTURE PHONE READ
+============================================================
+
+Before reading native Overture phone fields:
+- write every source-eligible record to a frozen CSV;
+- include record_id, GERS ID, region, GEOID, spider, source phone raw value,
+  canonical source number set, and deterministic audit hash;
+- hash the frozen CSV;
+- print `SOURCE_PHONE_UNIVERSE_FROZEN=YES`.
+
+Only after that line may the runner read Overture `phones`.
+
+============================================================
+6. OVERTURE PHONE EXTRACTION / EQUIVALENCE
+============================================================
+
+Read only the exact GERS entities already frozen in the source-phone universe.
+
+Inspect the complete native `phones` field for each exact entity.
+
+The runner must recursively inspect every scalar value inside `phones` if the schema is
+nested. It must not inspect only a first element.
+
+Apply the same US/NANP canonicalization rule.
+
+For one source record:
+
+PRESERVED
+= at least one valid source canonical number appears in the native Overture canonical set.
+
+ABSENT_ALL_NATIVE_PHONES
+= source is valid but Overture yields no valid native NANP phone.
+
+ATP_VALUE_NOT_PRESERVED_OTHER_NATIVE_PHONE
+= Overture has >=1 valid native NANP phone, but none equals any valid source number.
+
+OVERTURE_PHONE_UNPARSEABLE
+= raw native phone representation is nonblank but yields no valid canonical NANP number.
+
+The PRIMARY transfer-defect indicator is:
+NOT_PRESERVED =
+ABSENT_ALL_NATIVE_PHONES OR ATP_VALUE_NOT_PRESERVED_OTHER_NATIVE_PHONE
+OR OVERTURE_PHONE_UNPARSEABLE.
+
+This tests transfer of the exact source value.
+It does NOT treat a different native phone as "no contact information."
+
+============================================================
+7. PARSER / FIELD CONTROLS
+============================================================
+
+Before classification:
+- synthetic normalization fixtures must PASS;
+- every frozen eligible GERS ID must be recovered from the expected challenge region;
+- no fuzzy replacement is allowed.
+
+Additionally report real native-phone field controls:
+- number of challenge POIs, outside this ATP test if necessary, whose `phones` field is
+  nonblank and yields a valid NANP canonical number;
+- require >=20 such controls overall.
+
+This proves the native field/parser can recover real phone values.
+It does not prove ATP transfer.
+
+============================================================
+8. SYMMETRIC AUDIT
+============================================================
+
+The FULL eligible universe is classified.
+
+Create a deterministic audit packet:
+- up to 20 PRESERVED records;
+- up to 20 ABSENT_ALL_NATIVE_PHONES records;
+- up to 20 ATP_VALUE_NOT_PRESERVED_OTHER_NATIVE_PHONE records;
+- up to 20 OVERTURE_PHONE_UNPARSEABLE records.
+
+Selection is ascending SHA256 of:
+ATP_PHONE_P0B_AUDIT_v1|record_id|gers_id
+
+No class is replenished from another class.
+
+Audit rows retain exact ATP and Overture raw/canonical phone witnesses.
+No SVI, category, facility type, or demographic values are included.
+
+============================================================
+9. FROZEN P0B DEFECT GATES
+============================================================
+
+GATE A — PARENT / SOURCE INTEGRITY
+P0A manifest exact hash PASS and all P0A files referenced by its manifest match.
+
+GATE B — EXACT SNAPSHOT MATCH
+>=99.0% of frozen P0A source IDs found by exact ID in the frozen ATP run.
+
+GATE C — PHONE SUPPORT
+>=60 source-eligible valid-NANP records,
+>=10 scored tracts,
+>=2 challenge regions,
+source-unparseable share <=5%.
+
+GATE D — SOURCE UNIVERSE FREEZE
+source-phone universe written and SHA256 frozen BEFORE Overture phone read.
+
+GATE E — OVERTURE ENTITY / PARSER CONTROL
+100% expected exact GERS retrieval for source-eligible records;
+synthetic parser fixtures PASS;
+>=20 real native valid-phone controls.
+
+GATE F — TRANSFER DEFECT NECESSARY CONDITION
+Require ALL:
+- NOT_PRESERVED count >= 12;
+- NOT_PRESERVED share >= 20%;
+- NOT_PRESERVED spans >=5 scored tracts;
+- NOT_PRESERVED spans >=2 challenge regions.
+
+If GATE A-E pass but F fails:
+ATP_PHONE_P0B=FAIL
+RETIRE this ATP phone-transfer route for the current championship window.
+No threshold/category/geography rescue.
+
+If A-E and F pass:
+ATP_PHONE_P0B=PASS
+ATP_PHONE_P0C_AUTHORIZED=YES
+
+P0B PASS means ONLY:
+a broad enough exact-source phone-transfer defect exists in the August scored universe to
+justify a separately frozen equity/mechanism characterization.
+
+It does NOT establish:
+- Best Bias Discovery;
+- a vulnerable-group disparity;
+- service-role disparity;
+- emergency harm;
+- an inability to contact a destination;
+- superiority over live competitors.
+
+============================================================
+10. P0C BOUNDARY IF AUTHORIZED
+============================================================
+
+P0C must be preregistered before demographic/category/source-redundancy outcomes are opened.
+
+A strong P0C should distinguish:
+1. ATP source value lost but another valid native phone remains;
+2. ATP source value lost and no valid native phone remains;
+3. provider/source redundancy;
+4. exact service role only if independently and reproducibly defined;
+5. local disparity only under a frozen comparison.
+
+Do not reuse the killed generic "source layer becomes bias" correlation.
+The transfer defect must remain the mechanism.
+
+============================================================
+11. CLAIM BOUNDARIES
+============================================================
+
+Safe after P0B PASS:
+"The exact ATP phone value is not preserved on X% of exact source-linked August Overture
+entities in the scored universe."
+
+Only if supported separately:
+"Some losses leave no other native valid phone."
+
+Not safe from P0B:
+"critical services cannot be contacted";
+"vulnerable communities lose phones more often";
+"Overture caused emergency harm";
+"all missing ATP phones are correct/current";
+"another native phone is invalid simply because it differs from ATP."
+
+============================================================
+12. NO POST-OUTCOME RESCUE
+============================================================
+
+After P0B outcomes:
+- no alternate ATP run;
+- no new phone normalization;
+- no lower loss threshold;
+- no category subset rescue;
+- no geographic subset rescue;
+- no SVI threshold selection;
+- no replacing exact source IDs;
+- no current-website phone corrections.
+
+A FAIL is a FAIL.

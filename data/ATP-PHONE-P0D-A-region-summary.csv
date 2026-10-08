@@ -1,0 +1,5 @@
+region,matched_pairs,tracts,categories,control_phone_rate,exposed_phone_rate,controls_with_phone,risk_difference
+eastern-ok,156,134,5,0.9294871794871795,0.0,145,0.9294871794871795
+maricopa-az,73,66,6,0.9315068493150684,0.0,68,0.9315068493150684
+northern-ca,80,66,8,0.975,0.0,78,0.975
+south-central-tx,1777,1374,8,0.9538548114800225,0.0,1695,0.9538548114800225

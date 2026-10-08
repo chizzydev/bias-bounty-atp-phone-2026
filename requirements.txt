@@ -1,0 +1,6 @@
+# Pinned environment: Windows Python 3.12 raw-source reproduction completed 2026-10-08.
+# Python 3.12. Existing independent review used public open-source libraries.
+numpy==2.5.3
+pandas==3.0.6
+duckdb==1.5.4
+ijson==3.4.0

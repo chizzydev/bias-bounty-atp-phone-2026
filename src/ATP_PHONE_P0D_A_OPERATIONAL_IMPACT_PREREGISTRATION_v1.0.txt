@@ -1,0 +1,265 @@
+ATP-PHONE-P0D-A — OPERATIONAL SERVICE-ROLE IMPACT FREEZE
+PREREGISTRATION v1.0
+Frozen 2026-10-07 after P0C PASS and before inspecting operational-role/category outcomes.
+
+============================================================
+0. PARENT
+============================================================
+
+P0C manifest SHA256:
+52A430EF79CDBA22E99C89B60B0855CBD1B1C4C8478A078D10864CE1F277C492
+
+P0C established:
+- 6,505 matched pairs in the four official regions;
+- 3,489 scored tracts;
+- 90 exact primary categories;
+- pair table frozen before control-phone read;
+- ATP exposed valid-native-phone rate = 0;
+- matched non-ATP control valid-native-phone rate = 0.960030746;
+- matched risk difference = +0.960030746;
+- 6,245 matched controls with valid native phones;
+- regional risk differences:
+  eastern-ok       +0.950764007
+  maricopa-az      +0.968579235
+  northern-ca      +0.965408805
+  south-central-tx +0.959515002
+- all five P0C gates PASS;
+- literal SVI field absent, so no SVI outcome was read;
+- P0D authorized.
+
+============================================================
+1. WHY P0D-A EXISTS
+============================================================
+
+P0B/P0C establish a source-specific attribute-transfer defect and a very large matched
+native-contactability disparity.
+
+The Best Bias Discovery rubric also requires IMPACT:
+who is affected and why the disparity matters for emergency dispatch, evacuation routing,
+disaster relief, or climate resilience.
+
+P0D-A therefore asks a narrower question:
+
+Does the frozen ATP phone-loss cohort include enough prospectively defined operationally
+relevant service roles — medical contact, emergency/public response, and essential disaster
+supplies — to support a concrete impact argument?
+
+P0D-A does NOT:
+- invent new categories after seeing counts;
+- claim realized emergency harm;
+- claim every phone is current;
+- claim a missing phone makes a destination unreachable;
+- use SVI to rescue impact;
+- change the P0B or P0C effect.
+
+============================================================
+2. FROZEN SERVICE-ROLE TAXONOMY
+============================================================
+
+The exact v1.18.0 `categories.primary` whitelist is bundled as:
+
+ATP_PHONE_P0D_A_FROZEN_SERVICE_ROLE_TAXONOMY_v1.0.csv
+
+SHA256:
+1E2BB41AE7C97EE4440C21AC27454927B7C3E882BE675F8763C41AFAA7F34870
+
+It was frozen from the official Overture v1.18.0 legacy category taxonomy BEFORE local
+category outcomes were inspected.
+
+Three service families:
+
+A. MEDICAL_CONTACT
+Examples include:
+pharmacy, hospital, emergency_room, urgent_care_clinic, medical_center,
+community_health_center, public_health_clinic, ambulance_and_ems_services,
+medical_transportation, dialysis_clinic, skilled_nursing, medical_supply.
+
+B. EMERGENCY_PUBLIC_RESPONSE
+fire_department, police_department, emergency_service.
+
+C. ESSENTIAL_SUPPLIES
+grocery/supermarket/convenience, gas stations, hardware/home-improvement,
+water supplier/delivery, propane supplier.
+
+No category can be added after outcomes.
+
+============================================================
+3. OPERATIONAL-IMPACT BASIS
+============================================================
+
+FEMA/Ready.gov preparedness materials identify:
+- water and non-perishable food;
+- prescription medications and medical supplies;
+- fuel for vehicles/generators;
+- emergency contact / communication information;
+as concrete preparedness needs.
+
+Therefore phone/contact representation for places serving these roles can matter to
+preparedness and disaster logistics.
+
+Permitted language:
+"Native phone loss can reduce the map's ability to expose a direct contact channel for
+operationally relevant destinations such as pharmacies, medical providers, food/fuel/water
+suppliers, and emergency/public-service locations."
+
+Not permitted:
+- "People could not obtain medicine/food/fuel because Overture dropped phones."
+- "Emergency responders could not contact these places."
+- "This caused deaths/harm."
+- "Every listed phone is current/correct."
+
+============================================================
+4. PRIMARY REGION SET
+============================================================
+
+Primary championship regions:
+- eastern-ok
+- maricopa-az
+- northern-ca
+- south-central-tx
+
+Eastern Washington remains supplemental only and cannot rescue a primary gate.
+
+============================================================
+5. FULL LOSS-COHORT ROLE SUPPORT
+============================================================
+
+Use P0C `exposed-preoutcome-metadata` joined to the frozen P0B exact loss cohort.
+
+All parent exposed records are already confirmed:
+ABSENT_ALL_NATIVE_PHONES.
+
+OPERATIONAL_ROLE_LOSS =
+parent loss whose frozen `categories.primary` exists in the bundled role taxonomy.
+
+Primary support gates:
+- >= 250 operational-role phone losses;
+- >= 100 scored tracts;
+- all 4 official regions represented;
+- >= 2 of the 3 service families each have >= 50 losses;
+- >= 8 exact frozen primary categories represented.
+
+If support fails:
+P0D-A FAIL.
+No role/category substitution.
+
+============================================================
+6. MATCHED OPERATIONAL CONTACTABILITY
+============================================================
+
+Subset the already-frozen P0C matched pair table/results to exact frozen service-role
+categories.
+
+No rematching is allowed.
+
+Require:
+- >= 200 operational-role matched pairs;
+- >= 100 scored tracts;
+- >= 3 official regions;
+- >= 5 exact role categories;
+- matched non-ATP control valid-native-phone rate >= 0.80 overall;
+- >= 3/4 official regions have operational-role control phone rate >= 0.70;
+- >= 160 operational-role controls with valid native phones.
+
+The ATP exposed side remains exactly zero by parent P0B/P0C.
+
+If these gates fail:
+P0D-A FAIL.
+No broader role family or control rematch.
+
+============================================================
+7. MECHANICAL NAMED-ANCHOR FREEZE
+============================================================
+
+Freeze 3 operational-role examples per official region if support exists.
+
+Selection is fully mechanical:
+
+1. Candidate = operational-role ATP loss with nonblank source name.
+2. Attach the already-frozen P0C tract burden share.
+3. Within each region, order by:
+   a. tract loss_burden_share descending;
+   b. tract ATP_phone_loss_count descending;
+   c. SHA256("ATP_PHONE_P0D_A_ANCHOR_v1|record_id|gers_id") ascending.
+4. Select the first record in each distinct tract until 3 anchors are selected.
+
+No manual replacement.
+
+These anchors are NOT yet certified current-contact examples.
+A later P0D-B may independently validate frozen anchors/current official source pages.
+
+============================================================
+8. SOURCE MULTIPLICITY
+============================================================
+
+P0C reported every matched pair in the MULTI-source bin.
+
+P0D-A may report source counts for role-specific matched pairs, but MUST NOT claim:
+- another provider supplied the ATP phone;
+- source multiplicity guarantees redundant phone data.
+
+Safe:
+"Even matched multi-source ATP-bearing entities had no valid native phone, while matched
+non-ATP controls usually did."
+
+============================================================
+9. P0D-A PASS
+============================================================
+
+PASS requires:
+A. exact parent integrity;
+B. role-taxonomy integrity;
+C. full-cohort operational-role support;
+D. frozen matched operational contactability support;
+E. operational control phone-rate severity gates;
+F. >= 8 mechanically frozen named anchors across the four official regions
+   (target 12; no replacement).
+
+If PASS:
+ATP_PHONE_P0D_A=PASS
+ATP_PHONE_P0D_B_AUTHORIZED=YES
+
+P0D-B will:
+- independently validate the exact frozen anchors against public/official current sources
+  where possible;
+- perform a fresh direct live-Zindi competitor autopsy;
+- attack source-currentness and claim boundaries;
+- prepare an independent championship packet.
+
+P0D-A PASS is NOT submission authorization.
+
+============================================================
+10. NO RESCUE
+============================================================
+
+After outcomes:
+- no new category;
+- no new family;
+- no category roll-up;
+- no weaker count floor;
+- no replacing anchor records;
+- no dropping a weak official region;
+- no SVI rescue;
+- no new matching;
+- no alternate phone normalization.
+
+A FAIL is a FAIL.
+
+============================================================
+11. PUBLIC REFERENCES FROZEN
+============================================================
+
+Official Overture v1.18.0 Categories:
+https://docs.overturemaps.org/schema/v1.18.0/reference/places/types/categories/
+
+Official v1.18.0 category CSV:
+https://github.com/OvertureMaps/schema/blob/v1.18.0/docs/schema/concepts/by-theme/places/overture_categories.csv
+
+FEMA Ready emergency supply checklist:
+https://www.ready.gov/sites/default/files/2021-01/ready_emergency-supply-kit-checklist.pdf
+
+FEMA/Ready disaster preparedness:
+https://www.ready.gov/
+
+Official Bias Bounty page:
+https://zindi.world/competitions/bias-bounty-mapping-equity-challenge

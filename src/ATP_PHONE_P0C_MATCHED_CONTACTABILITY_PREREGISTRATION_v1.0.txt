@@ -1,0 +1,266 @@
+ATP-PHONE-P0C — MATCHED NATIVE-CONTACTABILITY DISPARITY
+PREREGISTRATION v1.0
+Frozen 2026-10-07 after P0B PASS and before reading any non-ATP control phone outcome,
+category composition summary, source-redundancy summary, or SVI burden comparison.
+
+0. PARENT RESULT / WHY P0C EXISTS
+
+P0B manifest SHA256:
+1FDD5B00179D45185DF6A97FD6F19354F93279882BE1B6AA6D5DDDEADE7E0740
+
+P0B established, prospectively:
+- exact ATP run 2026-08-01-13-32-15;
+- exact P0A IDs matched 31,654 / 31,654;
+- valid-NANP ATP source-phone records = 22,437;
+- source-phone universe frozen before native phone read;
+- exact eligible GERS retrieval = 100%;
+- 500 real valid native-phone parser controls;
+- PRESERVED = 0;
+- ABSENT_ALL_NATIVE_PHONES = 22,437;
+- NOT_PRESERVED share = 1.000000000;
+- 6,981 scored tracts;
+- all five package regions;
+- no SVI/demographic/category outcome was read.
+
+P0B therefore demonstrates a source-specific attribute-transfer defect.
+It does NOT yet establish a Best Bias Discovery disparity.
+
+1. FORMAL REOPEN LOGIC
+
+Historical route:
+"When the Source Layer Becomes the Bias"
+
+OLD WEAKNESS:
+a source-share x vulnerability association was considered insufficient structural novelty
+without a demonstrated map transformation defect.
+
+NEW EVIDENCE:
+exact ATP source records with valid upstream phones lose those values across the August
+challenge Overture representation at 22,437 / 22,437 exact source-linked records.
+
+WHY THIS CHANGES THE OLD WEAKNESS:
+the proposed mechanism is no longer "source share correlates with vulnerability."
+It is a directly demonstrated source-specific attribute-transfer failure.
+P0C now asks whether this transformation creates a matched native-contactability disparity.
+
+No historical numeric target/reference layer is reopened.
+
+2. PRIMARY CHAMPIONSHIP REGION SET
+
+For the P0C championship gate use the four regions named on the live official challenge page:
+- eastern-ok
+- maricopa-az
+- northern-ca
+- south-central-tx
+
+`eastern-wa`, present in the current public package / prior research environment, is retained
+only as SUPPLEMENTAL evidence in P0C and cannot rescue a primary-four-region failure.
+
+3. PRIMARY DISPARITY QUESTION
+
+Among Overture places in the same scored tract, with the same v1.18.0 primary category,
+the same source-multiplicity bin, the same operating-status bin, and the same brand-presence
+flag:
+
+Are exact ATP phone-bearing places less likely to expose ANY valid native NANP phone than
+otherwise comparable places whose native source list contains no AllThePlaces source?
+
+The exposed ATP group is frozen from P0B. No exposed entity may be replaced.
+
+This concerns NATIVE CONTACTABILITY REPRESENTATION, not phone correctness/currentness,
+actual reachability, emergency harm, or causality.
+
+4. OUTCOME-BLIND MATCHING CONTRACT
+
+Before reading ANY non-ATP control `phones` field:
+
+For every exact P0B ATP record, read only:
+- exact GERS id;
+- parent-frozen GEOID/region;
+- v1.18.0 `categories.primary`;
+- count of native `sources`;
+- `operating_status`;
+- whether native `brand` is present.
+
+Define:
+SOURCE_COUNT_BIN:
+- ONE if source_count <= 1
+- MULTI if source_count >= 2
+
+OPERATING_STATUS_BIN:
+- OPEN if operating_status == open
+- CLOSED if operating_status == permanently_closed
+- OTHER otherwise
+
+BRAND_PRESENT:
+- 1 if native brand struct is non-null
+- 0 otherwise
+
+CONTROL CANDIDATE:
+- exact Overture place inside exactly one authoritative scored tract;
+- native sources contain NO dataset == AllThePlaces;
+- nonblank v1.18.0 `categories.primary`;
+- same region, GEOID, primary category, SOURCE_COUNT_BIN, OPERATING_STATUS_BIN,
+  and BRAND_PRESENT as an exposed cell.
+
+No phone field can be used in control eligibility.
+Boundary-ambiguous control places are excluded prospectively.
+
+5. ONE-TO-ONE DETERMINISTIC MATCH
+
+Within each exact matching cell:
+
+Sort exposed ATP entities by SHA256:
+ATP_PHONE_P0C_EXP_v1|gers_id
+
+Sort eligible controls by SHA256:
+ATP_PHONE_P0C_CTL_v1|gers_id
+
+Pair row 1 to row 1, row 2 to row 2, etc., without replacement, up to min(E,C).
+
+No replenishment from another tract/category/status/source-count/brand cell.
+
+Freeze and SHA256 the matched pair table BEFORE reading control phone values.
+
+MATCH SUPPORT GATE:
+- >= 1,000 matched pairs in the primary four regions;
+- >= 100 scored tracts;
+- >= 3 primary regions;
+- >= 10 distinct primary categories.
+
+If support fails:
+ATP_PHONE_P0C=FAIL
+No relaxed matching, county fallback, category roll-up, or geographic rescue.
+
+6. CONTROL PHONE OUTCOME
+
+Only after `MATCHED_PAIR_TABLE_FROZEN=YES`:
+
+Read complete native `phones` for exact matched CONTROL GERS IDs.
+
+Apply the exact P0B NANP parser/equivalence:
+- recursively inspect all phone scalars;
+- semicolon split;
+- strip common trailing extensions;
+- digits only;
+- 10 digits valid;
+- 11 digits beginning 1 reduced to final 10;
+- no area-code imputation;
+- no seven-digit inference.
+
+CONTROL_HAS_VALID_NATIVE_PHONE = at least one canonical valid NANP phone.
+
+The ATP exposed side is inherited from P0B and must equal zero for every matched exposed
+record. Any parent status other than ABSENT_ALL_NATIVE_PHONES is a parent inconsistency.
+
+7. PRIMARY MATCHED METRIC / PASS GATE
+
+RD =
+mean(CONTROL_HAS_VALID_NATIVE_PHONE)
+-
+mean(EXPOSED_HAS_VALID_NATIVE_PHONE)
+
+P0C PRIMARY GATE requires ALL:
+A. match-support gate PASS;
+B. exact matched control GERS retrieval = 100%;
+C. overall RD >= +0.20;
+D. at least 3 of 4 primary regions have RD >= +0.15;
+E. overall matched controls with valid native phone >= 200.
+
+This is a material effect floor, not a significance-only gate.
+
+If primary gate FAILS:
+ATP_PHONE_P0C=FAIL
+Retire the matched-contactability route for the current championship window.
+No threshold/category/SVI/geographic rescue.
+
+8. SOURCE-REDUNDANCY CHARACTERIZATION
+
+After pair freeze, report prospectively:
+- ATP exposed source_count ONE vs MULTI;
+- matched control source_count ONE vs MULTI;
+- native-phone presence within matched controls by source-count bin.
+
+Safe:
+"ATP phone-bearing entities remained natively phone-empty even when their Overture source
+list contained multiple source records."
+
+Not safe:
+"Other providers supplied a phone and Overture deleted it."
+
+9. MECHANICALLY SELECTED TRACT BURDEN
+
+For every primary-region scored tract compute:
+- total native Overture POI count;
+- P0B ATP phone-loss count;
+- loss_burden_share = ATP phone-loss count / total native Overture POIs.
+
+This is NOT the primary matched disparity metric.
+
+Mechanically select judge-facing anchors:
+per primary region, among tracts with total_pois >= 20 and ATP_phone_loss_count >= 5,
+take the top 3 by:
+1. loss_burden_share descending
+2. ATP_phone_loss_count descending
+3. GEOID ascending
+
+No manual tract replacement.
+
+If a literal `SVI` column exists in the authoritative tract table:
+SECONDARY ONLY:
+- HIGH_SVI = SVI >= 0.75
+- LOW_SVI  = SVI < 0.25
+- compare equal-tract mean loss_burden_share.
+
+This secondary SVI comparison is NOT a P0C PASS gate and cannot rescue the primary
+matched comparison. Do not substitute another vulnerability field if `SVI` is absent.
+
+If a literal `population` or `pop_total` field exists, preserve it for judge-facing context;
+do not infer affected persons from lost phone count.
+
+10. NOVELTY BOUNDARY
+
+Fresh indexed search on 2026-10-07 found no direct public Bias Bounty entry specifically
+about AllThePlaces phone-number transfer loss or phone/contact-information transfer.
+
+This is PROVISIONAL only. P0D requires a fresh direct live-Zindi check.
+
+The novelty claim must be:
+- exact upstream attribute exists;
+- exact source-linked map entity drops it;
+- source cohort shows a matched native-contactability disadvantage.
+
+Do NOT frame novelty as "source share correlates with vulnerability."
+
+11. P0C PASS MEANING
+
+If all frozen primary gates pass:
+
+ATP_PHONE_P0C=PASS
+ATP_PHONE_P0D_AUTHORIZED=YES
+
+P0D may then freeze:
+- operationally relevant service-role taxonomy BEFORE inspecting role outcomes;
+- named-place/current-contact validation sample if needed;
+- direct live-field competitor autopsy;
+- strongest-rival head-to-head;
+- final claim/impact/reproducibility certification.
+
+P0C PASS does NOT establish realized emergency harm or a winning Discovery.
+
+12. NO POST-OUTCOME RESCUE
+
+After control-phone outcomes:
+- no new control matching variables;
+- no county fallback;
+- no category roll-up;
+- no new source-count bin;
+- no dropping low-phone categories;
+- no SVI threshold change;
+- no excluding a weak region;
+- no using eastern-wa to rescue a primary-four failure;
+- no source/provider substitution;
+- no alternate ATP snapshot;
+- no phone normalization change.
+
+A FAIL is a FAIL.

@@ -1,0 +1,15 @@
+# Do not accidentally publish downloaded or derived source/contact data
+atp_run/
+*.log
+.env
+.env.*
+__pycache__/
+*.pyc
+# High-risk raw source artifacts are not part of this repo
+*.parquet
+*.h5ad
+*.npz
+*.db
+*.sqlite
+*.sqlite3
+*.duckdb
