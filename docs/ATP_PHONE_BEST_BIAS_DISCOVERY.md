@@ -5,7 +5,7 @@
 **Prize:** Best Bias Discovery ($1,000)  
 **Data vintage:** Overture `2026-08-19.0`; exact historical AllThePlaces run `2026-08-01-13-32-15`, ended `2026-08-05T15:33:36Z`.  
 **Competition score submission associated with this entry:** **`Kmiqz6te` (V2-21, separately judged numerical submission)**  
-**Public source repository:** **https://github.com/chizzydev/bias-bounty-atp-phone-2026** (verify files are publicly readable before submitting)  
+**Public source repository:** **https://github.com/chizzydev/bias-bounty-atp-phone-2026**  
 
 ## Abstract
 
@@ -46,15 +46,15 @@ For a map-based relief directory, a null `phones` field eliminates an immediate 
 
 - All exposed primary records have ATP as their content provider; matched controls have Meta as content provider. Additional provenance entries are Overture calculations/status data and **not independent content providers**. Source behavior is confounded with group assignment.
 - Structural `brand` presence is not identical to meaningful brand-name equivalence. Same primary category does not guarantee similar real-world services, hours, chain size or phone publication practices.
-- Upstream phone format validation is not phone allocation, branch accuracy, successful dialing, or currentness validation. Keep the one conflicting/stale public anchor visible.
-- The TX tract polygon set includes seven additional zero-land/zero-population polygon IDs that are not in the official 6,003-ID sample list; the original all-tract burden export was not an exact authoritative-sample-set match. This does **not** change the frozen 21,608 primary omissions, the matched comparisons, or named anchors; do **not** represent the tract-burden CSV as a fully repaired all-scored-tract output.
+- Upstream phone format validation is not phone allocation, branch accuracy, successful dialing, or currentness validation. The independent review retained one conflicting or stale phone anchor in the reported evidence.
+- The TX tract polygon set includes seven additional zero-land/zero-population polygon IDs that are not in the official 6,003-ID sample list; the original all-tract burden export was not an exact authoritative-sample-set match. This does **not** change the frozen 21,608 primary omissions, the matched comparisons, or named anchors; The tract-burden CSV is therefore not presented as an authoritative, repaired all-scored-tract output.
 - Overture issue [#574](https://github.com/OvertureMaps/data/issues/574), filed September 28, 2026, already reported the general phenomenon of AllThePlaces phone omissions. This entry's distinct contribution is the exact historical US source-level audit, frozen matched comparison, and operational-role characterization; it is **not** a first discovery of generic ATP phone omission.
 - The comparison uses the frozen August release; current source corrections, newly licensed services or later Overture versions are outside the estimand.
 - The 12 external source anchors corroborate selected observations, not the full population. One conflicting example is preserved, not excluded.
 
 ## Reproduction and sources
 
-The provided `src/` files are provenance-preserving portability adaptations of the original preregistered P0A/P0B/P0C/P0D-A scripts. Only workspace paths and parent-manifest hash handoff have been adapted; the scientific cohort/threshold logic has not been intentionally changed. Original and transformed source hashes are recorded in `docs/SCRIPT_ORIGINS.json`. **Release rerun:** On 8 October 2026, the adapted P0A through P0D-A pipeline completed on the user’s Windows machine; a separate offline audit compared 16 result CSVs with privacy-preserving fingerprints of the frozen original. Thirteen matched byte-for-byte and three matched semantically with no changed fields. See `REPRODUCTION_CERTIFICATE_v1.1.md`. This is a documented local clean raw-source rerun, not a claim that a second independent new machine has executed the release.
+The repository `src/` files are provenance-preserving portability adaptations of the original preregistered P0A/P0B/P0C/P0D-A scripts. Adaptations are restricted to workspace paths and parent-manifest hash handoff; the frozen scientific cohort and threshold logic remain unchanged, as supported by the output-equivalence audit. Original and transformed source hashes are recorded in `docs/SCRIPT_ORIGINS.json`. **Reproduction:** On 8 October 2026, the adapted P0A through P0D-A pipeline completed on Windows 11 with Python 3.12; a separate offline audit compared 16 result CSVs with privacy-preserving fingerprints of the frozen original. Thirteen matched byte-for-byte and three matched semantically with no changed fields. See `REPRODUCTION_CERTIFICATE_v1.1.md`. This is a documented fresh local raw-source rerun; it does not assert execution on a second independent machine.
 
 On a compatible machine with Python 3.12 and access to public Overture/ATP inputs:
 
@@ -64,16 +64,14 @@ python verify_frozen_summary.py
 python run_discovery.py --work-dir atp_run
 ```
 
-The first command installs open-source dependencies; the second checks the included frozen **aggregate evidence only**; the third is the actual full source-to-output pipeline. The full historical AllThePlaces ZIP is roughly **2.95 GB** and should not be re-downloaded merely to run the aggregate certificate. DuckDB extensions may require public-network access. No paid API, removed reference layer or historical leaderboard target values are needed for this Discovery chain.
+The first command installs pinned dependencies, the second verifies packaged **aggregate evidence only**, and the third executes the full source-to-output pipeline. The full historical AllThePlaces ZIP is roughly **2.95 GB**. The aggregate certificate requires no raw-data download. DuckDB extensions may require public-network access. No paid API, removed reference layer or historical leaderboard target values are needed for this Discovery chain.
 
 - [Official competition](https://zindi.world/competitions/bias-bounty-mapping-equity-challenge) and [challenge public package](https://source.coop/humane-intelligence/bias-bounty-mapping-equity-challenge/README.md), official sample GEOID authority.
 - [Overture August release](https://docs.overturemaps.org/blog/2026/08/19/release-notes/) and [bridge file documentation](https://docs.overturemaps.org/gers/bridge-files/), `2026-08-19.0`.
 - [AllThePlaces historical run index](https://data.alltheplaces.xyz/runs/history.json); [exact historical archive](https://alltheplaces-data.openaddresses.io/runs/2026-08-01-13-32-15/output.zip) (SHA-256: `15B46EA37C2BD5C4A15723D0E97B65CF7D3B2C7A0ACACE0132F250CC66D9819F`).
 - AllThePlaces data are publicly available under CC0; respect release-specific Overture provenance and source-data attribution conditions. Public challenge-data reuse conditions also apply.
-- Public-source retrieval dates: 2026-10-07 (independent review); 2026-10-08 (release preparation). Do not silently substitute the latest live data for the fixed vintage.
+- Public-source retrieval dates: 2026-10-07 (independent review); 2026-10-08 (release preparation). All reported estimates are for the fixed source vintage.
 
-## Release integrity and ethics
+## Data handling and research ethics
 
-Raw witness records may contain public source phone numbers and source URLs with credential-like query parameters. They are **not** included in this public kit. Do not upload the raw P0E evidence archive or raw joined CSVs to a public repository without separate review and sanitization. The upstream public datasets remain available for complete execution through the open-source scripts.
-
-**To finalize this special-prize entry:** replace the two identity/link placeholders above with the active numerical-submission IDs and a verified public repository URL, run the clean reproduction, publish code/methodology for all participants, and submit the completed document via Zindi's separate Best Bias Discovery form.
+Raw witness records can contain public source phone numbers and source URLs with credential-like query parameters. These records are **excluded** from the published repository; the public release distributes only reviewed source code and aggregated supporting evidence. Original source datasets remain obtainable through the documented public sources for full execution.

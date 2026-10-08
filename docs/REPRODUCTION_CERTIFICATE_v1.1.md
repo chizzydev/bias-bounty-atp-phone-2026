@@ -1,6 +1,6 @@
-# ATP-PHONE v1.1 — Reproduction and publication certificate
+# ATP-PHONE — Source-to-output reproduction and equivalence record
 
-**Date:** 8 October 2026. **Environment:** User Windows PowerShell, `py -3.12` with dependencies installed from pinned requirements. **Scope:** P0A -> P0B -> P0C -> P0D-A; no score reconstruction, no new scientific cohorts, no P0D-B live-currentness rerun.
+**Execution date:** 8 October 2026. **Environment:** Windows 11 PowerShell, Python 3.12, dependencies installed from pinned requirements. **Scope:** P0A -> P0B -> P0C -> P0D-A; no score reconstruction, no new scientific cohorts, no P0D-B live-currentness rerun.
 
 ## Source-to-output execution observed
 
@@ -9,7 +9,7 @@
 - P0D-A operational matched output was byte-identical to original frozen output, as independently checked by subsequent audit.
 - P0D-B anchor/currentness and live-competitor review were historically independently assessed in the 7 October P0E adversarial review. Their **original** outcomes, including the one conflicting/stale phone anchor, are preserved.
 
-## Frozen-output equivalence audit — 2026-10-08 user log
+## Frozen-output equivalence audit — 8 October 2026
 
 Audit result: `AUDIT_GATE=PASS_FROZEN_OUTPUT_EQUIVALENCE`, exit code 0.
 
@@ -20,9 +20,9 @@ Audit result: `AUDIT_GATE=PASS_FROZEN_OUTPUT_EQUIVALENCE`, exit code 0.
 | `SEMANTIC_DIFFERENCE_REVIEW` | 0 | No changed fields identified |
 | `MISSING` or `READ_ERROR` | 0 | All expected outputs compared |
 
-Three non-identical byte streams without field-level changes: P0A bridge replay (120 rows), P0C tract-burden (9,379 rows), and P0D-A operational-role losses (4,711 rows). **These are not 3 failed experiments.** The original independent review's critique of the TX tract-burden geographic membership *still applies* even though all rows match the historical burden file; this receipt does not repair that methodological limitation.
+Three non-identical byte streams without field-level changes: P0A bridge replay (120 rows), P0C tract-burden (9,379 rows), and P0D-A operational-role losses (4,711 rows). These are not failed experiments; their field-level results agree with the frozen originals. The original independent review's critique of the TX tract-burden geographic membership *still applies* even though all rows match the historical burden file; this receipt does not repair that methodological limitation.
 
-This receipt is grounded in the user's PowerShell execution output and the preserved offline audit verifier. It does **not** claim an independently run second machine or independently revalidated real-world phone currentness. A judge can reproduce the work by running the public code against documented public inputs.
+This record is based on the saved PowerShell execution log and the preserved offline equivalence verifier. It does **not** claim an independently run second machine or independently revalidated real-world phone currentness. A judge can reproduce the work by running the public code against documented public inputs.
 
 ## Frozen scientific totals and boundaries
 
@@ -42,9 +42,9 @@ This receipt is grounded in the user's PowerShell execution output and the prese
 
 ## Secret / sensitive publication gate
 
-- The release candidate includes four audited portability-adapted Python runners, exact preregistrations, deterministic role taxonomy, static aggregate CSVs, full narrative and this receipt.
+- The public source release contains four audited portability-adapted Python runners, the exact preregistrations, a deterministic role taxonomy, aggregate CSVs, the methodology and this reproduction record.
 - It excludes full raw P0E evidence, joined phone/contact exports, credential-bearing raw source URLs, and local Windows run outputs.
 - Three apparent phone strings in one runner are synthetic `555` test fixtures, not contacts obtained from the historical source.
-- The final GitHub repository and generated final PDF still require public-link verification before the Google Form is submitted.
+- Public methodology and source code: https://github.com/chizzydev/bias-bounty-atp-phone-2026 .
 
-**Associated numerical Zindi entry:** `Kmiqz6te`. This is an administrative attachment for the separate Discovery form, **not** the source or model that produced the phone-omission findings.
+**Associated numerical Zindi entry:** `Kmiqz6te` (V2-21). It is a separately evaluated reference-free prediction submission and did not produce the phone-omission findings.
